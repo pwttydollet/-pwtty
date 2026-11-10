@@ -657,48 +657,7 @@ const client = new Client({
 // 2. Define the slash command structure
 const commands = [
     new SlashCommandBuilder()
-        .setName('ask')
-        .setDescription('Submit a question with an optional image.')
-        .addStringOption(option =>
-            option.setName('question')
-                .setDescription('Type the question you want to ask')
-                .setRequired(true)
-        )
-        .addAttachmentOption(option =>
-            option.setName('image')
-                .setDescription('Drag and drop or upload an image file (Optional)')
-                .setRequired(false)
-        )
-].map(command => command.toJSON());
-
-// 3. Register the slash command with Discord when the bot connects
-client.once('ready', async () => {
-    console.log(`Logged in as ${client.user.tag}`);
-
-    const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN || 'YOUR_BOT_TOKEN_HERE');
-
-    try {
-        console.log('Started refreshing application (/) commands.');
-        // This registers the command globally. (Can take a few minutes to appear everywhere)
-        await rest.put(
-            Routes.applicationCommands(client.user.id),
-            { body: commands },
-        );
-        console.log('Successfully reloaded application (/) commands.');
-    } catch (error) {
-        console.error(error);
-    }
-const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-
-// 1. Initialize the client with required intents
-const client = new Client({ 
-    intents: [GatewayIntentBits.Guilds] 
-});
-
-// 2. Define the slash command structure
-const commands = [
-    new SlashCommandBuilder()
-        .setName('ask')
+        .setName('vouch')
         .setDescription('Submit a question with an optional image.')
         .addStringOption(option =>
             option.setName('question')
@@ -766,6 +725,12 @@ client.on('interactionCreate', async interaction => {
 
         // Send the complete embed back to the channel
         await interaction.reply({ embeds: [embed] });
+    }
+});
+
+// 5. Log your bot in (Replace with your actual token)
+client.login('MTU2ODQ5MTQ5Nzk2NjI4MDcwNA.GRW8H9.UN1zJR6LG8ACrK7SwMshc0gaMw9BTqyP2rQ7qk');
+
     }
 });
 
