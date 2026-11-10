@@ -1,34 +1,20 @@
 import { logger } from '../utils/logger.js';
 
-export const botConfig = {
-  // =========================
-  // BOT PRESENCE (what users see under the bot name)
-  // =========================
-  // `status` options:
-  // - "online"    = green dot
-  // - "idle"      = yellow moon
-  // - "dnd"       = red do-not-disturb
-  // - "invisible" = appears offline
-  presence: {
-    // Current online state shown on Discord.
-    status: "dnd",
-
-    // Activity lines shown under the bot name.
-    // `type` number mapping from Discord:
-    // 0 = Playing
-    // 1 = Streaming
-    // 2 = Listening
-    // 3 = Watching
-    // 4 = Custom
-    // 5 = Competing
-    activities: [
-      {
-        name: "/Pwtty Podcast", // required by Discord API, not shown in the client
-        state: "All about the /pwtty things",     // this is what people actually see
-        type: 2,               // Listening
-      },
-    ],
-  },
+static void UpdatePresence()
+{
+    DiscordRichPresence discordPresence;
+    memset(&discordPresence, 0, sizeof(discordPresence));
+    discordPresence.state = "Shopping";
+    discordPresence.startTimestamp = 1000000;
+    discordPresence.endTimestamp = 10000;
+    discordPresence.largeImageKey = "lol";
+    discordPresence.largeImageText = "Numbani";
+    discordPresence.smallImageText = "Rogue - Level 100";
+    discordPresence.partyId = "ae488379-351d-4a4f-ad32-2b9b01c91657";
+    discordPresence.partySize = 1;
+    discordPresence.joinSecret = " ";
+    Discord_UpdatePresence(&discordPresence);
+}
 
   // =========================
   // COMMAND BEHAVIOR
