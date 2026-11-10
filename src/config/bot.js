@@ -23,8 +23,8 @@ export const botConfig = {
     // 5 = Competing
     activities: [
       {
-        name: "listening", // required by Discord API, not shown in the client
-        state: "i just want your love",     // this is what people actually see
+        name: "/Pwtty Podcast", // required by Discord API, not shown in the client
+        state: "All about the /pwtty things",     // this is what people actually see
         type: 2,               // Listening
       },
     ],
